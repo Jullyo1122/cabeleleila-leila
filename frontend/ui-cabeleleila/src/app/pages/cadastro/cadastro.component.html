@@ -1,0 +1,72 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <!-- Nome -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Nome completo</mat-label>
+    <input matInput formControlName="nome" placeholder="Ex. João Silva">
+    @if (form.get('nome')?.hasError('required')) {
+      <mat-error>Nome é obrigatório</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Email -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+           placeholder="Ex. pat@example.com">
+
+    @if (form.get('email')?.hasError('email')) {
+      <mat-error>Email inválido</mat-error>
+    }
+    @if (form.get('email')?.hasError('required')) {
+      <mat-error>Email é obrigatório</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Telefone -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Telefone</mat-label>
+    <input matInput formControlName="telefone" placeholder="(31) 99999-9999">
+
+    @if (form.get('telefone')?.hasError('required')) {
+      <mat-error>Telefone é obrigatório</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Senha -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Senha</mat-label>
+    <input matInput [type]="hide() ? 'password' : 'text'" formControlName="senha">
+
+    <button mat-icon-button matSuffix (click)="togglePassword($event)">
+      <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+    @if (form.get('senha')?.hasError('required')) {
+      <mat-error>Senha é obrigatória</mat-error>
+    }
+    @if (form.get('senha')?.hasError('minlength')) {
+      <mat-error>Mínimo 6 caracteres</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Confirmar senha -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Confirmar senha</mat-label>
+    <input matInput [type]="hideConfirm() ? 'password' : 'text'" formControlName="confirmarSenha">
+
+    <button mat-icon-button matSuffix (click)="toggleConfirmPassword($event)">
+      <mat-icon>{{hideConfirm() ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+    @if (form.hasError('senhaDiferente')) {
+      <mat-error>As senhas não coincidem</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Botão -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+    Cadastrar
+  </button>
+
+</form>
