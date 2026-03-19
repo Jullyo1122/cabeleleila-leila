@@ -6,7 +6,7 @@ import bcrypt
 
 from database import get_db
 
-app = APIRouter()
+router = APIRouter()
 
 # 📦 schema
 class UserCreate(BaseModel):
@@ -16,7 +16,7 @@ class UserCreate(BaseModel):
     senha: str
 
 # 🚀 endpoint
-@app.post("/register")
+@router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
 
     # 🔍 verifica email
