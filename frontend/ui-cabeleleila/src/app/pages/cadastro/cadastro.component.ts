@@ -12,6 +12,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../services/api.service';
+
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null): boolean {
@@ -42,7 +46,11 @@ function senhaMatchValidator(form: AbstractControl) {
   styleUrl: './cadastro.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
+
 export class CadastroComponent {
+
+  constructor(private api: ApiService) {}
 
   matcher = new MyErrorStateMatcher();
 
@@ -69,10 +77,20 @@ export class CadastroComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('Dados do cadastro:', this.form.value);
 
-      // 👉 aqui você vai chamar o backend (FastAPI)
-      // this.authService.register(this.form.value).subscribe(...)
-    }
+      const { confirmarSenha, ...user } = this.form.value;
+
+      this.api.register(user).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          alert(res.message);
+          this.form.reset();
+        },
+        error: (err) => {
+          console.error(err);
+          alert(err.error.detail);
+        }
+      });
+  }
   }
 }
