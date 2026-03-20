@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -40,12 +41,31 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
+  constructor(private api: ApiService) {}
+
   onSubmit() {
     if (this.form.valid) {
-      console.log('Login:', this.form.value);
 
-      // 👉 integração futura com backend
-      // this.authService.login(this.form.value).subscribe(...)
-    }
+    const user = {
+      email: this.form.value.email!,
+      senha: this.form.value.senha!
+    };
+    this.api.login(user).subscribe({
+      next: (res: any) => {
+        console.log(res);
+
+        // 🔐 se tiver token (JWT)
+        if (res.access_token) {
+          localStorage.setItem('token', res.access_token);
+        }
+
+        alert('Login realizado com sucesso 🚀');
+      },
+      error: (err) => {
+        console.error(err);
+        alert(err.error.detail || 'Erro no login');
+      }
+    });
+  }
   }
 }

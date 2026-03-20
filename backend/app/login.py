@@ -23,11 +23,11 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # 📦 Schema
 class User(BaseModel):
     email: str
-    password: str
+    senha: str
 
 # 🔑 Hash
-def hash_password(password: str):
-    return pwd_context.hash(password)
+def hash_password(senha: str):
+    return pwd_context.hash(senha)
 
 # 🔍 Verificar senha
 def verify_password(plain_password, hashed_password):
@@ -55,7 +55,7 @@ def login(user: User, db: Session = Depends(get_db)):
     if not db_user:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
 
-    if not verify_password(user.password, db_user.senha_hash):
+    if not verify_password(user.senha, db_user.senha_hash):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
 
     token = create_token({"sub": db_user.email})

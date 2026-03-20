@@ -13,4 +13,7 @@ export class ApiService {
   register(user: any) {
     return this.http.post('http://localhost:8000/cadastro/register', user);
   }
+  login(user: any) {
+  return this.http.post('http://localhost:8000/login/login', user);
+}
 }
