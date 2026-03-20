@@ -1,0 +1,114 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px;
+  background: #1e1e2f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Espaçamento automático */
+.spacer {
+  flex: 1;
+}
+
+/* Ações (lado direito) */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botões */
+button[mat-icon-button] {
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+button[mat-icon-button]:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Botão menu */
+.menu-btn {
+  margin-right: 8px;
+}
+
+main img {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+}
+
+.footer {
+  background: #1e1e2f;
+  color: #ccc;
+  padding: 80px 20px;
+  margin-top: -6px;
+}
+
+.footer-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Logo */
+.footer-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Links */
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #aaa;
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* Copy */
+.footer-copy {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Botão sobre a imagem */
+.agendamento-btn {
+  position: absolute;
+  bottom: 60px;
+  left: 115px;
+
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover bonito */
+.agendamento-btn:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
