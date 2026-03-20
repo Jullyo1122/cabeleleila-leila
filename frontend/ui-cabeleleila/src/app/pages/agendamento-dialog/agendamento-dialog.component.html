@@ -1,8 +1,53 @@
 <h2 mat-dialog-title>Agendamento</h2>
 
-<div mat-dialog-content>
-  <p>Escolha uma data e horário</p>
+<mat-form-field>
+  <mat-label>Escolha uma data</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div style="display: flex; gap: 10px;">
+
+  <!-- Hora -->
+  <mat-form-field appearance="outline">
+    <mat-label>Hora</mat-label>
+    <mat-select [(value)]="horaSelecionada">
+      <mat-option *ngFor="let h of horas" [value]="h">
+        {{ h }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Minuto -->
+  <mat-form-field appearance="outline">
+    <mat-label>Minuto</mat-label>
+    <mat-select [(value)]="minutoSelecionado">
+      <mat-option *ngFor="let m of minutos" [value]="m">
+        {{ m }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </div>
+
+<!-- Exibir resultado -->
+<p *ngIf="horarioCompleto">
+  Horário selecionado: <strong>{{ horarioCompleto }}</strong>
+</p>
+<mat-form-field>
+  <mat-label>Escolha o serviço</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option value="option1">Cabelos</mat-option>
+    <mat-option value="option2">Unhas</mat-option>
+    <mat-option value="option3">Maquiagem</mat-option>
+    <mat-option value="option4">Sobrancelhas</mat-option>
+    <mat-option value="option5">Premium</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selected}}</p>
+
 
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
