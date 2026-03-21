@@ -3,23 +3,20 @@ from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 import bcrypt
-
 from database import get_db
 
 router = APIRouter()
 
-# 📦 schema
 class UserCreate(BaseModel):
     nome: str
     email: EmailStr
     telefone: str
     senha: str
 
-# 🚀 endpoint
 @router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
 
-    # 🔍 verifica email
+    # 🔍 Verifica se o email já existe
     result = db.execute(
         text("SELECT id FROM users WHERE email = :email"),
         {"email": user.email}
@@ -28,26 +25,29 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     if result:
         raise HTTPException(status_code=400, detail="Email já cadastrado")
 
-    # 🔒 hash senha
+    # 🔒 Hash da senha
     senha_hash = bcrypt.hashpw(
         user.senha.encode(),
         bcrypt.gensalt()
     ).decode()
 
-    # 💾 insert
+    # 👑 Lógica para definir quem é Admin (coloque seu email principal aqui)
+    is_admin = True if user.email == "jullyo@example.com" else False
+
+    # 💾 Insert atualizado com a coluna is_admin
     db.execute(
         text("""
-            INSERT INTO users (nome, email, telefone, senha_hash)
-            VALUES (:nome, :email, :telefone, :senha)
+            INSERT INTO users (nome, email, telefone, senha_hash, is_admin)
+            VALUES (:nome, :email, :telefone, :senha, :is_admin)
         """),
         {
             "nome": user.nome,
             "email": user.email,
             "telefone": user.telefone,
-            "senha": senha_hash
+            "senha": senha_hash,
+            "is_admin": is_admin
         }
     )
 
     db.commit()
-
-    return {"message": "Usuário criado com sucesso 🚀"}
+    return {"message": "Usuário criado com sucesso 🚀", "admin": is_admin}

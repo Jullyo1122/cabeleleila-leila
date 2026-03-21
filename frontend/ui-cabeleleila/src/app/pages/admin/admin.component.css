@@ -1,0 +1,129 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px;
+  background: #1e1e2f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Espaçamento automático */
+.spacer {
+  flex: 1;
+}
+
+/* Ações (lado direito) */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botões */
+button[mat-icon-button] {
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+button[mat-icon-button]:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Botão menu */
+.menu-btn {
+  margin-right: 8px;
+}
+
+.container {
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.table-wrapper {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table thead {
+    background: #3f51b5;
+    color: white;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.custom-table tbody tr:hover {
+    background: #f5f5f5;
+}
+
+.footer {
+  background: #1e1e2f;
+  color: #ccc;
+  padding: 80px 20px;
+  margin-top: -6px;
+}
+
+.footer-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Logo */
+.footer-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Links */
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #aaa;
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* Copy */
+.footer-copy {
+  font-size: 14px;
+  color: #777;
+}

@@ -1,62 +1,53 @@
 <form (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{ data ? 'Editar Reserva' : 'Novo Agendamento' }}</h2>
 
-  <h2 mat-dialog-title>Agendamento</h2>
-
-  <!-- DATA -->
-  <mat-form-field>
-    <mat-label>Escolha uma data</mat-label>
-    <input matInput [matDatepicker]="picker"
-           [(ngModel)]="dataSelecionada"
-           name="data">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <div style="display: flex; gap: 10px;">
-
-    <!-- Hora -->
+  <mat-dialog-content style="display: flex; flex-direction: column; min-width: 300px;">
+    
     <mat-form-field appearance="outline">
-      <mat-label>Hora</mat-label>
-      <mat-select [(ngModel)]="horaSelecionada" name="hora">
-        <mat-option *ngFor="let h of horas" [value]="h">
-          {{ h }}
-        </mat-option>
+      <mat-label>Escolha uma data</mat-label>
+      <input matInput [matDatepicker]="picker"
+             [(ngModel)]="dataSelecionada"
+             name="data" required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div style="display: flex; gap: 10px;">
+      <mat-form-field appearance="outline" style="flex: 1;">
+        <mat-label>Hora</mat-label>
+        <mat-select [(ngModel)]="horaSelecionada" name="hora" required>
+          <mat-option *ngFor="let h of horas" [value]="h">{{ h }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="flex: 1;">
+        <mat-label>Minuto</mat-label>
+        <mat-select [(ngModel)]="minutoSelecionado" name="minuto" required>
+          <mat-option *ngFor="let m of minutos" [value]="m">{{ m }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Escolha o serviço</mat-label>
+      <mat-select [(ngModel)]="selected" name="servico" required>
+        <mat-option value="cabelo">Cabelos</mat-option>
+        <mat-option value="unha">Unhas</mat-option>
+        <mat-option value="maquiagem">Maquiagem</mat-option>
+        <mat-option value="sobrancelha">Sobrancelhas</mat-option>
+        <mat-option value="premium">Premium</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <!-- Minuto -->
-    <mat-form-field appearance="outline">
-      <mat-label>Minuto</mat-label>
-      <mat-select [(ngModel)]="minutoSelecionado" name="minuto">
-        <mat-option *ngFor="let m of minutos" [value]="m">
-          {{ m }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <p *ngIf="horarioCompleto" style="text-align: center; color: #666;">
+      Horário: <strong>{{ horarioCompleto }}</strong>
+    </p>
+  </mat-dialog-content>
 
-  </div>
-
-  <!-- Serviço -->
-  <mat-form-field>
-    <mat-label>Escolha o serviço</mat-label>
-    <mat-select [(ngModel)]="selected" name="servico">
-      <mat-option value="cabelo">Cabelos</mat-option>
-      <mat-option value="unha">Unhas</mat-option>
-      <mat-option value="maquiagem">Maquiagem</mat-option>
-      <mat-option value="sobrancelha">Sobrancelhas</mat-option>
-      <mat-option value="premium">Premium</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <p *ngIf="horarioCompleto">
-    Horário selecionado: <strong>{{ horarioCompleto }}</strong>
-  </p>
-
-  <div mat-dialog-actions>
+  <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close type="button">Cancelar</button>
     <button mat-raised-button color="primary" type="submit">
-      Confirmar
+      {{ data ? 'Salvar Alterações' : 'Confirmar Agendamento' }}
     </button>
-  </div>
-
+  </mat-dialog-actions>
 </form>

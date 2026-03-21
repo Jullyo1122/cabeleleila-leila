@@ -1,0 +1,79 @@
+<header>
+    <mat-toolbar class="header">
+
+        <button mat-icon-button class="menu-btn">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="logo">My App</span>
+
+        <span class="spacer"></span>
+
+        <div class="actions">
+            <button mat-icon-button>
+                <mat-icon>favorite</mat-icon>
+            </button>
+
+            <button mat-icon-button>
+                <mat-icon>share</mat-icon>
+            </button>
+        </div>
+
+    </mat-toolbar>
+</header>
+
+<main class="container">
+
+    <h2>Lista de Agendamentos</h2>
+
+    <div class="table-wrapper">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Serviço</th>
+                    <th>Cliente</th> <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let a of agendamentos">
+                    <td>{{ a.data }}</td>
+                    <td>{{ a.horario }}</td>
+                    <td>{{ a.servico }}</td>
+                    <td>{{ a.nome_usuario }}</td> <td>
+            <button mat-icon-button color="primary" (click)="editar(a)">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <!-- Logo / Nome -->
+        <span class="footer-logo">My App</span>
+
+        <!-- Links -->
+        <div class="footer-links">
+            <a href="#">Sobre</a>
+            <a href="#">Serviços</a>
+            <a href="#">Contato</a>
+        </div>
+
+        <!-- Direitos -->
+        <span class="footer-copy">
+            © 2026 My App - Todos os direitos reservados
+        </span>
+
+    </div>
+
+</footer>

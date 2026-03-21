@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Minhas Reservas</h2>
+
+  @if (agendamentos.length === 0) {
+    <mat-card class="aviso-vazio">
+      <mat-card-content>
+        <mat-icon>calendar_today</mat-icon>
+        <p>Você ainda não possui agendamentos marcados.</p>
+        <button mat-stroked-button color="primary" routerLink="/agendar">
+          Agendar Agora
+        </button>
+      </mat-card-content>
+    </mat-card>
+  }
+
+  <mat-card *ngFor="let a of agendamentos" class="agendamento-card">
+    <mat-card-content>
+      <p><strong>Serviço:</strong> {{a.servico}}</p>
+      <p><strong>Data:</strong> {{a.data}} às {{a.horario}}</p>
+      
+      <button mat-raised-button color="primary" 
+              [disabled]="!podeEditar(a.data, a.horario)"
+              (click)="editar(a)">
+        {{ podeEditar(a.data, a.horario) ? 'Editar' : 'Bloqueado (Prazo 48h)' }}
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
