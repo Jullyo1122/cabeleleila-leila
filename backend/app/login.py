@@ -58,7 +58,10 @@ def login(user: User, db: Session = Depends(get_db)):
     if not verify_password(user.senha, db_user.senha_hash):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
 
-    token = create_token({"sub": db_user.email})
+    token = create_token({
+    "sub": db_user.email,
+    "user_id": db_user.id
+})
 
     return {
         "access_token": token,
@@ -68,14 +71,22 @@ def login(user: User, db: Session = Depends(get_db)):
 
 # 🔒 Rota protegida
 @router.get("/me")
-def get_me(credentials: HTTPAuthorizationCredentials = Depends(security)):
+def get_me(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: Session = Depends(get_db)
+):
     token = credentials.credentials
     payload = decode_token(token)
 
     if not payload:
         raise HTTPException(status_code=401, detail="Token inválido")
 
+    user_id = payload.get("user_id")
+
+    user = db.query(UserDB).filter(UserDB.id == user_id).first()
+
     return {
-        "email": payload.get("sub"),
-        "msg": "Acesso autorizado"
+        "id": user.id,
+        "nome": user.nome,
+        "email": user.email
     }
