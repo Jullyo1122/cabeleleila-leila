@@ -8,12 +8,15 @@ export class ApiService {
 
   private API_URL = 'http://localhost:8000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   register(user: any) {
     return this.http.post('http://localhost:8000/cadastro/register', user);
   }
   login(user: any) {
-  return this.http.post('http://localhost:8000/login/login', user);
-}
+    return this.http.post('http://localhost:8000/login/login', user);
+  }
+  agendar(user: any){
+    return this.http.post('http://localhost:8000/agendamento/agendar', user);
+  }
 }

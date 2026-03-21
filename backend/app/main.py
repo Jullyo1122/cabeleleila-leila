@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from cadastro import router as router_cadastro
 from login import router as router_login
 from fastapi.middleware.cors import CORSMiddleware
+from agendamento import router as router_agendamento
 
 app = FastAPI()
 
@@ -23,5 +24,6 @@ app.add_middleware(
 # Inclui os routers com prefixos
 app.include_router(router_cadastro, prefix="/cadastro", tags=["Cadastro"])
 app.include_router(router_login, prefix="/login", tags=["Login"])
+app.include_router(router_agendamento, prefix="/agendamento", tags=["Agendamento"])
 
 
