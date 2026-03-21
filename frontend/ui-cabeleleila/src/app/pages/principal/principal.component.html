@@ -1,13 +1,8 @@
 <header>
     <mat-toolbar class="header">
 
-        <!-- Menu -->
-        <button mat-icon-button class="menu-btn">
-            <mat-icon>menu</mat-icon>
-        </button>
-
         <!-- Logo / Nome -->
-        <span class="logo">My App</span>
+        <span class="logo">Agendly</span>
 
         <!-- Espaço -->
         <span class="spacer"></span>
@@ -21,6 +16,9 @@
             <button mat-icon-button>
                 <mat-icon>share</mat-icon>
             </button>
+            <button mat-raised-button (click)="irParaAgendamentos()" class="botao-agendamentos">
+                Meus Agendamentos
+            </button>
         </div>
 
     </mat-toolbar>
@@ -30,7 +28,7 @@
     <div class="banner-container">
         <img src="../../../assets/banner/banner-cabeleleila.png" alt="banner">
 
-        <button mat-raised-button color="primary" class="agendamento-btn" mat-raised-button color="primary"
+        <button mat-raised-button class="agendamento-btn"
             class="agendamento-btn" (click)="abrirAgendamento()">
             Marcar Agendamento
         </button>
@@ -41,7 +39,7 @@
     <div class="footer-content">
 
         <!-- Logo / Nome -->
-        <span class="footer-logo">My App</span>
+        <span class="footer-logo">Agendly</span>
 
         <!-- Links -->
         <div class="footer-links">
@@ -52,7 +50,7 @@
 
         <!-- Direitos -->
         <span class="footer-copy">
-            © 2026 My App - Todos os direitos reservados
+            © 2026 Agendly - Todos os direitos reservados
         </span>
 
     </div>

@@ -6,7 +6,6 @@ from agendamento import router as router_agendamento
 
 app = FastAPI()
 
-# CORS para permitir o Angular acessar
 origins = [
     "http://localhost:4200",
     "http://127.0.0.1:4200"
@@ -21,7 +20,6 @@ app.add_middleware(
 )
 
 
-# Inclui os routers com prefixos
 app.include_router(router_cadastro, prefix="/cadastro", tags=["Cadastro"])
 app.include_router(router_login, prefix="/login", tags=["Login"])
 app.include_router(router_agendamento, prefix="/agendamento", tags=["Agendamento"])

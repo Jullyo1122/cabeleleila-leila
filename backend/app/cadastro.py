@@ -16,7 +16,6 @@ class UserCreate(BaseModel):
 @router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
 
-    # 🔍 Verifica se o email já existe
     result = db.execute(
         text("SELECT id FROM users WHERE email = :email"),
         {"email": user.email}
@@ -25,16 +24,13 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     if result:
         raise HTTPException(status_code=400, detail="Email já cadastrado")
 
-    # 🔒 Hash da senha
     senha_hash = bcrypt.hashpw(
         user.senha.encode(),
         bcrypt.gensalt()
     ).decode()
 
-    # 👑 Lógica para definir quem é Admin (coloque seu email principal aqui)
     is_admin = True if user.email == "jullyo@example.com" else False
 
-    # 💾 Insert atualizado com a coluna is_admin
     db.execute(
         text("""
             INSERT INTO users (nome, email, telefone, senha_hash, is_admin)

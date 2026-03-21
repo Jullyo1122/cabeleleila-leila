@@ -2,7 +2,7 @@
 
   <h2>Login</h2>
 
-  <!-- Email -->
+  
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input type="email" matInput formControlName="email" placeholder="Ex. usuario@email.com">
@@ -15,7 +15,7 @@
     }
   </mat-form-field>
 
-  <!-- Senha -->
+  
   <mat-form-field class="example-full-width">
     <mat-label>Senha</mat-label>
     <input matInput [type]="hide() ? 'password' : 'text'" formControlName="senha">
@@ -29,15 +29,14 @@
     }
   </mat-form-field>
 
-  <!-- Botão -->
+
   <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
     Entrar
   </button>
 
-  <!-- Link para cadastro -->
   <p class="link-cadastro">
     Não tem conta?
-    <a routerLink="/cadastro">Criar conta</a>
+    <a>Criar conta</a>
   </p>
 
 </form>

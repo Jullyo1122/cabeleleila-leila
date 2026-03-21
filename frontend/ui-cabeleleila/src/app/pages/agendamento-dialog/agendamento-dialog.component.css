@@ -2,3 +2,7 @@ mat-form-field {
   width: 100%;
   margin-bottom: 8px;
 }
+.botao-confirm-agend{
+  background-color: black;
+  color: white;
+}

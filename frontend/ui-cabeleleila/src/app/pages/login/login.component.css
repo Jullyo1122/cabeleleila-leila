@@ -1,25 +1,101 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+}
+
 .example-form {
-  max-width: 400px;
-  margin: 60px auto;
+  width: 100%;
+  max-width: 320px;
+  padding: 24px;
+  background: #000000;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 h2 {
   text-align: center;
+  color: #000000;
+  margin-bottom: 10px;
 }
 
-button {
-  margin-top: 8px;
+.mat-mdc-form-field {
+  width: 100%;
 }
 
+.mat-mdc-text-field-wrapper {
+  background: #1c1c1c;
+  border-radius: 6px;
+}
+
+.mdc-line-ripple {
+  display: none;
+}
+
+.mat-mdc-input-element {
+  color: #000000 !important;
+}
+
+.mat-mdc-form-field .mdc-floating-label {
+  color: #aaa !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: #ef9b14 !important;
+}
+
+mat-icon {
+  color: #ef9b14;
+}
+
+mat-error {
+  font-size: 11px;
+  color: #ff4d4d;
+}
+
+button[type="submit"] {
+  margin-top: 10px;
+  height: 42px;
+  background-color: #ef9b14 !important;
+  color: #000 !important;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+/* Hover */
+button[type="submit"]:hover {
+  background-color: #d48810 !important;
+}
+
+/* Desabilitado */
+button[type="submit"]:disabled {
+  background-color: #444 !important;
+  color: #999 !important;
+}
+
+/* Link cadastro */
 .link-cadastro {
   text-align: center;
   margin-top: 12px;
+  color: #ccc;
+  font-size: 13px;
 }
 
+/* Link clicável */
 .link-cadastro a {
-  text-decoration: none;
+  color: #ef9b14;
   font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.link-cadastro a:hover {
+  color: #fff;
 }

@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null): boolean {
@@ -47,7 +48,7 @@ function senhaMatchValidator(form: AbstractControl) {
 
 export class CadastroComponent {
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   matcher = new MyErrorStateMatcher();
 
@@ -82,11 +83,13 @@ export class CadastroComponent {
           console.log(res);
           alert(res.message);
           this.form.reset();
+          this.router.navigate(['/login'])
         },
         error: (err) => {
           console.error(err);
           alert(err.error.detail);
         }
+        
       });
   }
   }

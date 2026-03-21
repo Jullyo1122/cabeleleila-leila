@@ -1,6 +1,5 @@
 <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <!-- Nome -->
   <mat-form-field class="example-full-width">
     <mat-label>Nome completo</mat-label>
     <input matInput formControlName="nome" placeholder="Ex. João Silva">
@@ -9,7 +8,6 @@
     }
   </mat-form-field>
 
-  <!-- Email -->
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
@@ -23,7 +21,6 @@
     }
   </mat-form-field>
 
-  <!-- Telefone -->
   <mat-form-field class="example-full-width">
     <mat-label>Telefone</mat-label>
     <input matInput formControlName="telefone" placeholder="(31) 99999-9999">
@@ -33,7 +30,6 @@
     }
   </mat-form-field>
 
-  <!-- Senha -->
   <mat-form-field class="example-full-width">
     <mat-label>Senha</mat-label>
     <input matInput [type]="hide() ? 'password' : 'text'" formControlName="senha">
@@ -50,7 +46,6 @@
     }
   </mat-form-field>
 
-  <!-- Confirmar senha -->
   <mat-form-field class="example-full-width">
     <mat-label>Confirmar senha</mat-label>
     <input matInput [type]="hideConfirm() ? 'password' : 'text'" formControlName="confirmarSenha">
@@ -64,7 +59,6 @@
     }
   </mat-form-field>
 
-  <!-- Botão -->
   <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
     Cadastrar
   </button>

@@ -7,10 +7,10 @@ from database import get_db
 from sqlalchemy import text
 
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from jose import jwt, JWTError  # se decode_token estiver aqui ou em outro arquivo
+from jose import jwt, JWTError 
 from models import UserDB
 from login import decode_token, security
-from models import Agendamento  # Certifique-se que o nome do modelo no seu models.py é esse
+from models import Agendamento  
 
 
 

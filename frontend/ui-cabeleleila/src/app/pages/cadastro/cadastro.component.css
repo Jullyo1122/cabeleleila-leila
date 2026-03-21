@@ -1,11 +1,72 @@
-.example-form {
-  max-width: 400px;
-  margin: 40px auto;
+:host {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
 }
 
-button {
-  margin-top: 16px;
+.example-form {
+  width: 100%;
+  max-width: 320px;
+  padding: 24px;
+  background: #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  background: #1c1c1c;
+  border-radius: 6px;
+}
+
+.mdc-line-ripple {
+  display: none;
+}
+
+.mat-mdc-input-element {
+  color: #000000 !important;
+}
+
+.mat-mdc-form-field .mdc-floating-label {
+  color: #aaa !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: #ef9b14 !important;
+}
+
+mat-icon {
+  color: #ef9b14;
+}
+
+mat-error {
+  font-size: 11px;
+  color: #ff4d4d;
+}
+
+button[type="submit"] {
+  margin-top: 10px;
+  height: 42px;
+  background-color: #ef9b14 !important;
+  color: #000 !important;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #d48810 !important;
+}
+
+button[type="submit"]:disabled {
+  background-color: #444 !important;
+  color: #999 !important;
 }

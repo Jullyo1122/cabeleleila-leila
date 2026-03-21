@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,7 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   onSubmit() {
     if (this.form.valid) {
@@ -60,6 +61,7 @@ export class LoginComponent {
         }
 
         alert('Login realizado com sucesso 🚀');
+        this.router.navigate(['/principal']);
       },
       error: (err) => {
         console.error(err);

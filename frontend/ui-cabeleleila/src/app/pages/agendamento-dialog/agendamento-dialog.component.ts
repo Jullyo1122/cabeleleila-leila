@@ -96,6 +96,7 @@ export class AgendamentoDialogComponent implements OnInit {
         next: () => {
           alert('Agendamento atualizado! 🚀');
           this.dialogRef.close(true);
+          
         },
         error: (err) => alert('Erro ao atualizar')
       });
