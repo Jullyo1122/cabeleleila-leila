@@ -167,7 +167,7 @@ http://localhost:4200
 
 *  Cadastro de usuários
 *  Login com autenticação JWT
-*  Criação de agendamentos
+*  Agendamentos
 *  Listagem de agendamentos
 *  Controle de usuário administrador
 
@@ -176,7 +176,7 @@ http://localhost:4200
 ## ⚠️ Observações
 
 * O backend deve estar rodando antes do frontend
-* Certifique-se de que o MySQL está ativo
+* MySQL deve está ativo
 * Verifique se a porta 8000 não está sendo usada
  
 ---
