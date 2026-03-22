@@ -176,8 +176,8 @@ http://localhost:4200
 ## ⚠️ Observações
 
 * O backend deve estar rodando antes do frontend
-  Certifique-se de que o MySQL está ativo
-*  Verifique se a porta 8000 não está sendo usada
+* Certifique-se de que o MySQL está ativo
+* Verifique se a porta 8000 não está sendo usada
  
 ---
 
