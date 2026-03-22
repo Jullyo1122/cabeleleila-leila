@@ -181,15 +181,6 @@ http://localhost:4200
 
 ---
 
-## 💡 Melhorias Futuras
-
-* Deploy em nuvem (backend + banco)
-* Integração com pagamentos
-* Painel administrativo completo
-* Notificações de agendamento
-
----
-
 ## 👨‍💻 Autor
 
 Projeto desenvolvido para fins acadêmicos e demonstração técnica.
